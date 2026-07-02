@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gcolegonzales.github.io/still-waters-counseling/sitemap.xml
+Sitemap: https://stillwatersla.org/sitemap.xml
