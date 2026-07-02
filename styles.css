@@ -186,6 +186,15 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
 .mobile-menu.open li:nth-child(7) a{ animation-delay:.30s; }
 .mobile-menu.open li:nth-child(8) a{ animation-delay:.34s; }
 @keyframes menuIn{ to{ opacity:1; transform:translateX(0); } }
+/* the call button in the drawer is a pill, not a plain menu link — undo the
+   .mobile-menu a link styles (left-align, 0 side padding, border-bottom, serif)
+   it would otherwise inherit and win on specificity */
+.mobile-menu .btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:100%; padding:.9rem 1.5rem; border:1px solid var(--line);
+  border-radius:999px; font-family:var(--sans); font-size:1rem;
+  letter-spacing:.01em; opacity:1; transform:none; animation:none;
+}
 .menu-scrim{
   position:fixed; inset:0; z-index:110; background:rgba(44,65,79,.35);
   backdrop-filter:blur(2px); opacity:0; transition:opacity .4s var(--ease);
