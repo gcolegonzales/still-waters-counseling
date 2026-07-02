@@ -27,7 +27,8 @@
 
 /* ---------- reset ---------- */
 *,*::before,*::after{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; overflow-x:hidden; overflow-x:clip; scroll-padding-top:90px; }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; overflow-x:hidden; scroll-padding-top:90px; }
+body{ overflow-x:hidden; }
 @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
 body{
   margin:0;
@@ -190,6 +191,9 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
   backdrop-filter:blur(2px); opacity:0; transition:opacity .4s var(--ease);
 }
 .menu-scrim.show{ opacity:1; }
+
+/* the off-canvas drawer is only used <=960px (hamburger); drop it from layout on desktop so it can't create horizontal overflow */
+@media (min-width:961px){ .mobile-menu, .menu-scrim{ display:none; } }
 
 /* ============================================================
    HERO
