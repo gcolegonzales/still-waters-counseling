@@ -62,7 +62,36 @@
     "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     "opens": "10:00",
     "closes": "17:00"
-  }
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Laura Gonzales",
+    "honorificSuffix": "LMSW, LCSW",
+    "jobTitle": "Licensed Clinical Social Worker, Owner"
+  },
+  "sameAs": [
+    "https://www.psychologytoday.com/us/therapists/still-waters-counseling-therapy-gonzales-la/182335"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "bestRating": "5",
+    "reviewCount": "3"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Verified patient" },
+      "reviewBody": "Laura is so sweet and empathetic and provides lots of strategies during sessions. I highly recommend!"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Verified patient" },
+      "reviewBody": "Laura is incredibly professional and responsive."
+    }
+  ]
 }
 </script>
 
@@ -91,6 +120,7 @@
         <li><a href="#approach">Approach</a></li>
         <li><a href="#specialties">Specialties</a></li>
         <li><a href="#who">Who I Help</a></li>
+        <li><a href="#reviews">Reviews</a></li>
         <li><a href="#fees">Fees</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -118,6 +148,7 @@
         <li><a href="#therapies">Types of Therapy</a></li>
         <li><a href="#who">Who I Help</a></li>
         <li><a href="#credentials">Credentials</a></li>
+        <li><a href="#reviews">Reviews</a></li>
         <li><a href="#fees">Fees &amp; Insurance</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -149,6 +180,10 @@
         <span class="dot"></span> Now accepting new clients &amp; referrals · Available online
       </p>
       <h1 class="reveal">Find Peace.<br />Find Healing.<br /><em>Find Hope.</em></h1>
+      <p class="hero-byline reveal">
+        with <strong>Laura Gonzales, LMSW, LCSW</strong>
+        <span>Owner &amp; Therapist · Still Waters Counseling &amp; Therapy</span>
+      </p>
       <p class="hero-lede reveal">
         Compassionate individual &amp; couples counseling with a faith-based approach —
         thoughtful, confidential care delivered wherever you feel most at ease.
@@ -216,11 +251,21 @@
 <!-- ============ ABOUT / APPROACH ============ -->
 <section class="about" id="about">
   <div class="about-grid">
-    <div class="about-media reveal" aria-hidden="true">
-      <div class="about-card">
-        <img src="assets/still-waters-brand.jpg" alt="" loading="lazy" />
-      </div>
-      <div class="about-verse-chip">
+    <div class="about-media reveal">
+      <figure class="provider-card">
+        <!-- IMG-NEEDED: drop the real portrait at assets/laura-gonzales.jpg — the
+             monogram below shows gracefully until then (onerror hides a missing file) -->
+        <span class="provider-monogram" aria-hidden="true">LG</span>
+        <img src="assets/laura-gonzales.jpg"
+             alt="Laura Gonzales, LMSW, LCSW — owner and therapist at Still Waters Counseling &amp; Therapy"
+             loading="lazy" onerror="this.style.display='none'" />
+        <figcaption class="provider-badge">
+          <span class="pb-name">Laura Gonzales</span>
+          <span class="pb-cred">LMSW · LCSW</span>
+          <span class="pb-role">Owner &amp; Therapist</span>
+        </figcaption>
+      </figure>
+      <div class="about-verse-chip" aria-hidden="true">
         <span>“He restores my soul.”</span>
       </div>
     </div>
@@ -243,8 +288,7 @@
         Over <strong>16 years</strong> of experience helping adults, teens and couples
         reach goals in their mental-health journey they once thought impossible.
       </blockquote>
-      <!-- TODO: add clinician's name -->
-      <p class="signoff">— Your therapist, a Licensed Clinical Social Worker (LCSW)</p>
+      <p class="signoff">— Laura Gonzales, <span>LMSW, LCSW</span><br />Licensed Clinical Social Worker &amp; Owner</p>
     </div>
   </div>
 </section>
@@ -378,6 +422,11 @@
   <div class="section-head reveal">
     <p class="section-kicker">Credentials &amp; Education</p>
     <h2>Trusted, licensed, and experienced.</h2>
+    <p class="cred-provider">Laura Gonzales, <strong>LMSW, LCSW</strong> — Licensed Clinical Social Worker &amp; Owner</p>
+    <a class="pt-verified" href="https://www.psychologytoday.com/us/therapists/still-waters-counseling-therapy-gonzales-la/182335" target="_blank" rel="noopener" aria-label="Verified by Psychology Today (opens in a new tab)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z" fill="currentColor" opacity=".14"/><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="m8.6 11.8 2.3 2.3 4.5-4.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Verified by <strong>Psychology Today</strong></span>
+    </a>
   </div>
 
   <div class="cred-grid">
@@ -396,6 +445,47 @@
       <div><dt>NPI</dt><dd>1588085112</dd></div>
       <div><dt>Malpractice</dt><dd>Allied World Insurance Company (exp. 01/27)</dd></div>
     </dl>
+  </div>
+</section>
+
+<!-- ============ REVIEWS / TESTIMONIALS ============ -->
+<section class="reviews" id="reviews">
+  <div class="section-head reveal center">
+    <p class="section-kicker">Kind Words</p>
+    <h2>Rated 5.0 by the people she walks with.</h2>
+    <div class="rating-row">
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <span class="rating-num">5.0</span>
+      <span class="rating-src">Perfect rating on Google &amp; Healthgrades</span>
+    </div>
+  </div>
+
+  <div class="review-grid">
+    <figure class="review-card reveal">
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <blockquote>Laura is so sweet and empathetic and provides lots of strategies during sessions. I highly recommend!</blockquote>
+      <figcaption>Verified patient <span>· Healthgrades</span></figcaption>
+    </figure>
+    <figure class="review-card reveal">
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <blockquote>I've been to several counselors over the years and she has, by far, been the best. I would highly recommend Laura.</blockquote>
+      <figcaption>Client testimonial</figcaption>
+    </figure>
+    <figure class="review-card reveal">
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <blockquote>Laura is an absolute wonder. What she did for my daughter was amazing — I have an eternal depth of gratitude and appreciation for your skill and patience.</blockquote>
+      <figcaption>Client testimonial</figcaption>
+    </figure>
+    <figure class="review-card reveal">
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <blockquote>Laura is incredibly professional and responsive.</blockquote>
+      <figcaption>Verified patient <span>· Healthgrades</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="review-cta reveal">
+    <a class="btn btn-ghost" href="https://www.google.com/search?q=Still+Waters+Counseling+%26+Therapy+Gonzales+LA+reviews" target="_blank" rel="noopener">Read reviews on Google</a>
+    <a class="btn btn-ghost" href="https://www.psychologytoday.com/us/therapists/still-waters-counseling-therapy-gonzales-la/182335" target="_blank" rel="noopener">See her Psychology Today profile</a>
   </div>
 </section>
 
