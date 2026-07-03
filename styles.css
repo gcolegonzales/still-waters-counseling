@@ -320,11 +320,11 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
 .values ul{
   max-width:var(--wrap); margin:0 auto;
   display:grid; grid-template-columns:repeat(4,1fr);
-  padding:clamp(2rem,4vw,3rem) clamp(1rem,4vw,2rem);
+  padding:clamp(1.4rem,2.6vw,1.9rem) clamp(1rem,4vw,2rem);
 }
 .values li{
-  display:flex; flex-direction:column; align-items:center; gap:.7rem;
-  color:var(--slate-deep); position:relative; padding:.5rem 1rem;
+  display:flex; flex-direction:column; align-items:center; gap:.55rem;
+  color:var(--slate-deep); position:relative; padding:.3rem 1rem;
 }
 .values li:not(:last-child)::after{
   content:""; position:absolute; right:0; top:50%; transform:translateY(-50%);
