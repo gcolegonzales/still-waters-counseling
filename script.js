@@ -101,12 +101,26 @@
   /* ---------- graceful form feedback ---------- */
   var form = document.getElementById('inquiryForm');
   if (form) {
-    form.addEventListener('submit', function () {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var val = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; };
+      var checked = form.querySelector('input[name="Counseling For"]:checked');
+      var body =
+        'Name: ' + val('f-name') + '\n' +
+        'Email: ' + val('f-email') + '\n' +
+        'Phone: ' + val('f-phone') + '\n' +
+        'Counseling for: ' + (checked ? checked.value : '') + '\n\n' +
+        'What brings you in:\n' + val('f-brings') + '\n\n' +
+        'Preferred days & times: ' + val('f-times') + '\n';
+      var href = 'mailto:Lglcsw@outlook.com'
+        + '?subject=' + encodeURIComponent('Appointment request — ' + (val('f-name') || 'New client'))
+        + '&body=' + encodeURIComponent(body);
       var btn = form.querySelector('button[type="submit"]');
       if (btn) {
         btn.textContent = 'Opening your email…';
         setTimeout(function () { btn.textContent = 'Send my request'; }, 4000);
       }
+      window.location.href = href;
     });
   }
 })();
