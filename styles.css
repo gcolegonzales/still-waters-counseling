@@ -27,8 +27,8 @@
 
 /* ---------- reset ---------- */
 *,*::before,*::after{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; overflow-x:hidden; scroll-padding-top:90px; }
-body{ overflow-x:hidden; }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; overflow-x:clip; max-width:100%; scroll-padding-top:90px; }
+body{ overflow-x:clip; max-width:100%; -webkit-tap-highlight-color:transparent; }
 @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
 body{
   margin:0;
@@ -39,7 +39,7 @@ body{
   line-height:1.65;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
-  overflow-x:hidden;
+  overflow-x:clip;
 }
 img{ max-width:100%; display:block; }
 a{ color:inherit; }
@@ -156,6 +156,7 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
 .nav-toggle{
   display:none; width:44px; height:44px; border:none; background:transparent;
   cursor:pointer; padding:10px; position:relative; z-index:130;
+  -webkit-tap-highlight-color:transparent; user-select:none;
 }
 .nav-toggle span{
   display:block; height:2px; width:100%; background:var(--slate-deep); border-radius:2px;
@@ -171,6 +172,7 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
 .mobile-menu{
   position:fixed; inset:0; z-index:120; overflow:hidden;
   visibility:hidden; pointer-events:none;
+  -webkit-tap-highlight-color:transparent; user-select:none;
   transition:visibility 0s linear .5s;   /* stay visible through the slide-out, then hide */
 }
 .mobile-menu.open{ visibility:visible; transition-delay:0s; }
@@ -217,6 +219,7 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
 .menu-scrim{
   position:fixed; inset:0; z-index:110; background:rgba(44,65,79,.35);
   backdrop-filter:blur(2px); opacity:0; transition:opacity .4s var(--ease);
+  -webkit-tap-highlight-color:transparent; user-select:none;
 }
 .menu-scrim.show{ opacity:1; }
 
@@ -791,6 +794,10 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
   .nav-toggle{ display:block; }
   .brand{ margin-right:auto; }
 
+  /* On mobile the header is ~80px; the desktop hero top padding (clamp min 6rem
+     = 96px) stacked on top of that left an awkward empty gap below the fixed
+     header. Reduce it so the hero sits a comfortable distance below the bar. */
+  .hero{ padding-top:4.75rem; }
   .hero-grid{ grid-template-columns:1fr; }
   .hero-media{ max-width:380px; margin:0 auto; order:-1; }
   .hero-photo{ aspect-ratio:16/10; border-radius:26px; }
