@@ -575,9 +575,21 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
 .rating-row .stars{ font-size:1.5rem; }   /* larger, on its own line above the text */
 .rating-detail{ margin:0; font-size:.98rem; color:var(--slate); }
 .rating-detail strong{ font-family:var(--serif); font-weight:600; font-size:1.2rem; color:var(--slate-deep); }
+/* prominent Google review stat strip */
+.stars-lg{ display:block; font-size:1.9rem; margin:.5rem 0 .1rem; }
+.review-stats{
+  display:flex; justify-content:center; flex-wrap:wrap; gap:1rem 0;
+  margin:.5rem 0 .4rem;
+}
+.rstat{ display:flex; flex-direction:column; align-items:center; gap:.25rem; padding:0 clamp(1.1rem,4vw,2.2rem); }
+.rstat + .rstat{ border-left:1px solid var(--line); }
+.rstat-num{ font-family:var(--serif); font-weight:600; font-size:clamp(2.1rem,5vw,2.6rem); line-height:1; color:var(--slate-deep); }
+.rstat-num small{ font-size:.42em; color:var(--slate-soft); font-weight:400; }
+.rstat-label{ font-family:var(--sans); font-size:.72rem; font-weight:600; letter-spacing:.13em; text-transform:uppercase; color:var(--slate); }
+.review-source{ margin:.2rem 0 0; font-size:.92rem; font-style:italic; color:var(--slate-soft); }
 .review-grid{
-  max-width:var(--wrap); margin:0 auto 2.4rem;
-  display:grid; grid-template-columns:repeat(2,1fr); gap:1.4rem;
+  max-width:var(--wrap); margin:2.2rem auto 2.4rem;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.4rem;
 }
 .review-card{
   margin:0; background:#fff; border:1px solid var(--line); border-radius:20px;
@@ -804,6 +816,11 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
 @media (max-width:720px){
   .top-specialties{ grid-template-columns:1fr; }
   .review-grid{ grid-template-columns:1fr; }
+  /* keep the three review stats on one tidy row; equal columns so they never
+     wrap into a lone stat with a dangling divider */
+  .review-stats{ flex-wrap:nowrap; gap:0; width:100%; max-width:420px; margin-inline:auto; }
+  .rstat{ flex:1; padding:0 .5rem; }
+  .rstat-label{ font-size:.62rem; letter-spacing:.08em; }
   .expertise-cols{ grid-template-columns:1fr 1fr; gap:.3rem 1.4rem; }
   .fee-list{ grid-template-columns:1fr; }
   .who-panels{ grid-template-columns:1fr; }
