@@ -564,12 +564,13 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
 }
 .section-head.center{ text-align:center; margin-left:auto; margin-right:auto; }
 .rating-row{
-  display:inline-flex; align-items:center; gap:.6rem; flex-wrap:wrap; justify-content:center;
-  margin-top:.4rem;
+  display:flex; flex-direction:column; align-items:center; gap:.55rem;
+  margin-top:.7rem;
 }
 .stars{ color:#e0a94b; letter-spacing:.12em; font-size:1.15rem; line-height:1; }
-.rating-num{ font-family:var(--serif); font-weight:600; font-size:1.5rem; color:var(--slate-deep); }
-.rating-src{ font-size:.92rem; color:var(--slate); }
+.rating-row .stars{ font-size:1.5rem; }   /* larger, on its own line above the text */
+.rating-detail{ margin:0; font-size:.98rem; color:var(--slate); }
+.rating-detail strong{ font-family:var(--serif); font-weight:600; font-size:1.2rem; color:var(--slate-deep); }
 .review-grid{
   max-width:var(--wrap); margin:0 auto 2.4rem;
   display:grid; grid-template-columns:repeat(2,1fr); gap:1.4rem;
