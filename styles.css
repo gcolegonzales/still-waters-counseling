@@ -55,6 +55,11 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .skip-link:focus{ left:0; }
 
 :focus-visible{ outline:2.5px solid var(--slate); outline-offset:3px; border-radius:4px; }
+#main:focus{ outline:none; }
+
+/* anchor targets sit clear of the fixed header (scroll-padding alone can under-shoot
+   the taller scrolled header, and in-content ids like #approach need their own offset) */
+section[id], #main, #top, #approach, [id]:target{ scroll-margin-top:104px; }
 
 /* ---------- shared type ---------- */
 h1{ font-family:var(--serif); font-weight:500; font-size:clamp(2.7rem,6vw,4.6rem); letter-spacing:-.5px; }

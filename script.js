@@ -28,6 +28,30 @@
   var toggle = document.getElementById('navToggle');
   var menu = document.getElementById('mobileMenu');
   var scrim = document.getElementById('menuScrim');
+  var header = document.getElementById('siteHeader');
+  var mainEl = document.getElementById('main');
+  var footerEl = document.querySelector('.site-footer');
+  var panel = menu ? menu.querySelector('.mobile-menu-panel') : null;
+
+  function focusableInPanel() {
+    if (!panel) return [];
+    return Array.prototype.slice.call(
+      panel.querySelectorAll('a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])')
+    );
+  }
+
+  // hide the rest of the page from AT + tab order while the drawer is open
+  function setBackgroundInert(on) {
+    [mainEl, footerEl, header].forEach(function (el) {
+      if (!el) return;
+      if (on) { el.setAttribute('inert', ''); el.setAttribute('aria-hidden', 'true'); }
+      else { el.removeAttribute('inert'); el.removeAttribute('aria-hidden'); }
+    });
+    // the toggle lives inside the header; keep it usable so it can still close
+    if (on && toggle && header && header.contains(toggle)) {
+      toggle.removeAttribute('inert');
+    }
+  }
 
   function openMenu() {
     menu.classList.add('open');
@@ -36,31 +60,76 @@
     toggle.setAttribute('aria-label', 'Close menu');
     scrim.hidden = false;
     requestAnimationFrame(function () { scrim.classList.add('show'); });
+    document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
+    setBackgroundInert(true);
+    // move focus into the drawer (first link)
+    var first = panel ? panel.querySelector('a[href], button') : null;
+    if (first) { try { first.focus(); } catch (e) {} }
   }
-  function closeMenu() {
+  function closeMenu(returnFocus) {
+    var wasOpen = menu.classList.contains('open');
     menu.classList.remove('open');
     menu.setAttribute('aria-hidden', 'true');
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Open menu');
     scrim.classList.remove('show');
+    document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
+    setBackgroundInert(false);
     setTimeout(function () { scrim.hidden = true; }, 400);
+    // return focus to the toggle (unless a nav link is taking us elsewhere)
+    if (wasOpen && returnFocus !== false && toggle) { try { toggle.focus(); } catch (e) {} }
   }
   if (toggle) {
     toggle.addEventListener('click', function () {
       menu.classList.contains('open') ? closeMenu() : openMenu();
     });
   }
-  if (scrim) scrim.addEventListener('click', closeMenu);
+  if (scrim) scrim.addEventListener('click', function () { closeMenu(); });
   if (menu) {
     menu.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', closeMenu);
+      // nav-link tap moves the page; don't yank focus back to the toggle
+      a.addEventListener('click', function () { closeMenu(false); });
     });
   }
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && menu && menu.classList.contains('open')) closeMenu();
+    if (!menu || !menu.classList.contains('open')) return;
+    if (e.key === 'Escape') { closeMenu(); return; }
+    // focus trap: keep Tab within the drawer panel
+    if (e.key === 'Tab') {
+      var f = focusableInPanel();
+      if (!f.length) { e.preventDefault(); return; }
+      var firstF = f[0], lastF = f[f.length - 1];
+      var active = document.activeElement;
+      if (e.shiftKey) {
+        if (active === firstF || !panel.contains(active)) { e.preventDefault(); lastF.focus(); }
+      } else {
+        if (active === lastF || !panel.contains(active)) { e.preventDefault(); firstF.focus(); }
+      }
+    }
   });
+
+  // reset drawer + toggle state when crossing the desktop breakpoint
+  var desktopMq = window.matchMedia('(min-width:961px)');
+  function handleBreakpoint(e) {
+    if (e.matches && menu && menu.classList.contains('open')) closeMenu(false);
+  }
+  if (desktopMq.addEventListener) desktopMq.addEventListener('change', handleBreakpoint);
+  else if (desktopMq.addListener) desktopMq.addListener(handleBreakpoint);
+
+  /* ---------- skip link: move focus to <main> ---------- */
+  var skipLink = document.querySelector('.skip-link');
+  if (skipLink && mainEl) {
+    skipLink.addEventListener('click', function () {
+      mainEl.setAttribute('tabindex', '-1');
+      // focus after the browser processes the hash jump
+      requestAnimationFrame(function () {
+        try { mainEl.focus(); } catch (e) {}
+      });
+    });
+    mainEl.addEventListener('blur', function () { mainEl.removeAttribute('tabindex'); });
+  }
 
   /* ---------- scroll reveal ---------- */
   var revealEls = document.querySelectorAll('.reveal');
