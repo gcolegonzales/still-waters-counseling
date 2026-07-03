@@ -781,8 +781,14 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
   .hero-ripples{ display:none; }
 
   .about-grid{ grid-template-columns:1fr; }
-  .about-media{ max-width:440px; margin:0 auto 1.5rem; }
+  /* When stacked, keep an explicit width so the media column can't shrink-wrap:
+     the provider card's children are all absolutely positioned, so with auto
+     margins the grid item would otherwise collapse to a sliver and the verse
+     chip would float over the "My Approach" heading below it. */
+  .about-media{ width:min(440px,100%); margin:0 auto 1.5rem; }
   .provider-card{ margin-inline:auto; }
+  /* keep the decorative verse chip tucked onto the card, never past its edge */
+  .about-verse-chip{ top:-14px; left:8px; }
   .cred-grid{ grid-template-columns:1fr; }
   .cred-block{ position:static; }
   .fees-grid{ grid-template-columns:1fr; grid-template-areas:"head" "rate" "list"; }
