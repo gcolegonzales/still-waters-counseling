@@ -122,15 +122,15 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
 
 .brand{ text-decoration:none; display:flex; flex-direction:column; line-height:1; margin-right:auto; }
 .brand-script{
-  font-family:var(--script); color:var(--slate-deep);
-  font-size:clamp(2.15rem,3.6vw,2.85rem); line-height:.9;
+  font-family:var(--script); color:var(--slate-ink);
+  font-size:clamp(2.5rem,4.6vw,3.6rem); line-height:.9;
   transition:font-size .4s var(--ease);
 }
-.site-header.scrolled .brand-script{ font-size:clamp(1.85rem,3vw,2.35rem); }
+.site-header.scrolled .brand-script{ font-size:clamp(2.05rem,3.4vw,2.75rem); }
 .brand-sub{
-  font-family:var(--sans); font-weight:600; color:var(--slate);
-  font-size:.66rem; letter-spacing:.34em; text-transform:uppercase;
-  margin-top:.28rem;
+  font-family:var(--sans); font-weight:700; color:var(--slate-deep);
+  font-size:.74rem; letter-spacing:.3em; text-transform:uppercase;
+  margin-top:.32rem;
 }
 .brand-sub .llc{ letter-spacing:.18em; opacity:.75; }
 
@@ -370,7 +370,7 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
 /* provider photo card (portrait + name badge; graceful monogram until the
    real photo is dropped at assets/laura-gonzales.jpg) */
 .provider-card{
-  position:relative; margin:0; aspect-ratio:4/5; max-width:400px;
+  position:relative; margin:0; aspect-ratio:4/5; max-width:300px;
   border-radius:26px; overflow:hidden;
   border:8px solid #fff; box-shadow:var(--shadow);
   background:linear-gradient(160deg,#dceaf0 0%,#c3d8e2 100%);
@@ -808,7 +808,7 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
      the provider card's children are all absolutely positioned, so with auto
      margins the grid item would otherwise collapse to a sliver and the verse
      chip would float over the "My Approach" heading below it. */
-  .about-media{ width:min(440px,100%); margin:0 auto 1.5rem; }
+  .about-media{ width:min(300px,100%); margin:0 auto 1.5rem; }
   .provider-card{ margin-inline:auto; }
   /* keep the decorative verse chip tucked onto the card, never past its edge */
   .about-verse-chip{ top:-14px; left:8px; }
