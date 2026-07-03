@@ -98,7 +98,11 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
    HEADER
    ============================================================ */
 .site-header{
-  position:fixed; inset:0 0 auto 0; z-index:100;
+  /* z-index sits ABOVE the mobile menu (120) and scrim (110) so the header —
+     and the nav toggle inside it — stays on top when the drawer is open; the
+     toggle can then morph hamburger->X in place instead of being covered.
+     The drawer's 6rem top padding is sized to clear this header bar. */
+  position:fixed; inset:0 0 auto 0; z-index:140;
   background:rgba(238,244,247,.72);
   backdrop-filter:saturate(1.4) blur(14px);
   border-bottom:1px solid transparent;
