@@ -40,17 +40,17 @@
     );
   }
 
-  // hide the rest of the page from AT + tab order while the drawer is open
+  // Hide the rest of the page from AT + tab order while the drawer is open.
+  // NOTE: do NOT inert the header — the close toggle (X) lives inside it, and
+  // `inert` is inherited by the whole subtree (you cannot un-inert a child while
+  // its ancestor is inert), which would silently make the X unclickable to real
+  // taps while `.click()` still worked. Only the actual background content is inerted.
   function setBackgroundInert(on) {
-    [mainEl, footerEl, header].forEach(function (el) {
+    [mainEl, footerEl].forEach(function (el) {
       if (!el) return;
       if (on) { el.setAttribute('inert', ''); el.setAttribute('aria-hidden', 'true'); }
       else { el.removeAttribute('inert'); el.removeAttribute('aria-hidden'); }
     });
-    // the toggle lives inside the header; keep it usable so it can still close
-    if (on && toggle && header && header.contains(toggle)) {
-      toggle.removeAttribute('inert');
-    }
   }
 
   function openMenu() {
