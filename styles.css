@@ -289,7 +289,7 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
 /* hero media */
 .hero-media{ position:relative; }
 .hero-photo{
-  aspect-ratio:3/4; border-radius:180px 180px 24px 24px;
+  aspect-ratio:3/2; border-radius:28px;
   background-size:cover; background-position:center;
   box-shadow:var(--shadow); position:relative; z-index:2;
   border:6px solid rgba(255,255,255,.7);
@@ -805,7 +805,7 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
   .hero{ padding-top:4.75rem; }
   .hero-grid{ grid-template-columns:1fr; }
   .hero-media{ max-width:380px; margin:0 auto; order:-1; }
-  .hero-photo{ aspect-ratio:16/10; border-radius:26px; }
+  .hero-photo{ aspect-ratio:3/2; border-radius:26px; }
   .hero-ripples{ display:none; }
 
   .about-grid{ grid-template-columns:1fr; }
