@@ -374,7 +374,7 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
 /* provider photo card (portrait + name badge; graceful monogram until the
    real photo is dropped at assets/laura-gonzales.jpg) */
 .provider-card{
-  position:relative; margin:0; aspect-ratio:4/5; max-width:330px;
+  position:relative; margin:0; aspect-ratio:4/5; max-width:248px;
   border-radius:26px; overflow:hidden;
   border:8px solid #fff; box-shadow:var(--shadow);
   background:linear-gradient(160deg,#dceaf0 0%,#c3d8e2 100%);
@@ -623,10 +623,10 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
 .fees{ padding:clamp(4rem,8vw,7rem) clamp(1rem,4vw,2rem); }
 .fees-grid{
   max-width:var(--wrap); margin:0 auto;
-  display:grid; grid-template-columns:1.1fr .9fr; grid-template-areas:"head rate" "list list";
-  gap:2.2rem clamp(2rem,5vw,4rem); align-items:center;
+  display:grid; grid-template-columns:1fr; grid-template-areas:"head" "list";
+  gap:2.2rem clamp(2rem,5vw,4rem);
 }
-.fees-head{ grid-area:head; }
+.fees-head{ grid-area:head; text-align:center; max-width:44rem; margin:0 auto; }
 .fees-head h2{ margin:.5rem 0 .8rem; }
 .fee-rate{
   grid-area:rate; justify-self:end; text-align:center;
@@ -818,8 +818,7 @@ h3{ font-family:var(--serif); font-size:1.5rem; }
   .about-verse-chip{ top:-14px; left:8px; }
   .cred-grid{ grid-template-columns:1fr; }
   .cred-block{ position:static; }
-  .fees-grid{ grid-template-columns:1fr; grid-template-areas:"head" "rate" "list"; }
-  .fee-rate{ justify-self:stretch; }
+  .fees-grid{ grid-template-columns:1fr; grid-template-areas:"head" "list"; }
   .contact-grid{ grid-template-columns:1fr; }
   .footer-inner{ grid-template-columns:1fr; }
 }
